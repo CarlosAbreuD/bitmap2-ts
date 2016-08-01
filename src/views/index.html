@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title> Homework #2</title>
+    <link rel="stylesheet" type="text/css" href="style.css">
+  </head>
+  <body>
+    <div id="myModal" class="modal">
+
+      <!-- Modal content -->
+      <div class="modal-content">
+        <span class="close">×</span>
+        <div>
+          <canvas id="originalCanvas" style="display: block">
+          </canvas>
+        </div>
+        <div>
+          <canvas id="zoomedCanvas" style="display: block">
+          </canvas>
+        </div>
+        <hr>
+        Zoom:<select id="inputRange" >
+          <option value="1"> 1X
+          <option value="1.5"> 1.5X
+          <option value="2"> 2X
+          <option value="4"> 4X
+          <option value="5"> 5X
+          <option value="7"> 7X
+          <option value="10"> 10X
+        </select>
+      </div>
+
+    </div>
+    <canvas id="canvas1" style="display:none;">
+    </canvas>
+    <div class="center">
+      <input type="file" id="file" name="file"/>
+    </div>
+    <div id="options">
+      <hr>
+      <button id="negative" type="button">Negative</button>
+      <button id="rotate90CW" type="button">Rotate 90 CW</button>
+      <button id="rotate180" type="button">Rotate 180</button>
+      <button id="rotate270CW" type="button">Rotate 270 CW</button>
+      <button id="rotate90CCW" type="button">Rotate 90 CCW</button>
+      <button id="rotate270CCW" type="button">Rotate 270 CCW</button>
+      <button id="horizontalFlip" type="button">Flip Horizontal</button>
+      <button id="verticalFlip" type="button">Flip Vertical</button>
+      <hr>
+      <div>
+        <label> Brightness</label>
+        <input id="brightness" type="number" max="255" min="-255">
+        <button id="brightnessBtn">Apply</button>
+      </div>
+      <hr>
+      <div>
+        <label> Contrast</label>
+        <input id="contrast" type="number" max="255" min="-255">
+        <button id="contrastBtn">Apply</button>
+      </div>
+      <hr>
+      <div>
+        <button id="equalization">Equalization</button>
+      </div>
+      <hr>
+      <div>
+        <label> Min value</label>
+        <input id="minValueUmbral" type="number" max="255" min="0">
+        <label> Max value</label>
+        <input id="maxValueUmbral" type="number" max="255" min="0" value="255">
+        <button id="umbralization">Umbralization</button>
+      </div>
+      <hr>
+      <div>
+        <input type="radio" name="algorithm" value="neighbor" checked=""> Nearest neighbor<br>
+        <input type="radio" name="algorithm" value="interpolation"> Bi-lineal interpolation<br>
+      </div>
+      <hr>
+      <div>
+        <label> Scale</label><br>
+        <label> width (px)</label><input id="scaleWidth" type="number" min="0"><br>
+        <label> height (px)</label><input id="scaleHeight" type="number" min="0"><br>
+        <button id="scaleBtn">Apply</button>
+      </div>
+      <hr>
+      <div>
+        <label> Rotate </label><br>
+        <label> angle </label><input id="rotateAngle" type="number" min="0"><br>
+        <button id="rotateBtn">Apply</button>
+      </div>
+      <hr>
+      <div>
+        <button id="openModal">Zoom</button>
+      </div>
+      <hr>
+      <div>
+        <button id="save"> Save file</button>
+      </div>
+      <h3>Informacion Relevante</h3>
+      <table>
+        <tr>
+          <td>Width</td>
+          <td id ="width"></td>
+        </tr>
+        <tr>
+          <td>Height</td>
+          <td id="height"></td>
+        </tr>
+        <tr>
+          <td>Profundidad de Bits</td>
+          <td id="bitsDepth"></td>
+        </tr>
+        <tr>
+          <td>Size in MB</td>
+          <td id="size"></td>
+        </tr>
+      </table>
+      <h3>Histogram</h3>
+      <canvas id="histogram_r" width="258" height="102"></canvas>
+      <canvas id="histogram_g" width="258" height="102"></canvas>
+      <canvas id="histogram_b" width="258" height="102"></canvas>
+      <canvas id="histogram_avg" width="258" height="102"></canvas>
+    </div>
+    <script>
+    if (!(window.File && window.FileReader && window.FileList && window.Blob)) {
+      alert('The File APIs are not fully supported in this browser.');
+    }
+    </script>
+    <script src="../../lib/FileSaver.min.js"></script>
+    <script data-main="../../build/main.js" src="../../lib/require.js"></script>
+
+
+  </body>
+</html>
